@@ -40,6 +40,7 @@
     "lo": "github:danmasta/lo#85a49a0"
   },
   "devDependencies": {
+    "@rollup/plugin-alias": "^5.1.1",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "c8": "^10.1.3",
     "chai": "^5.2.0",
