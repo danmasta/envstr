@@ -19,10 +19,14 @@ export default [
             entryFileNames: '[name].js',
             esModule: false
         },
+        external: [
+            'qjs:os',
+            'qjs:std'
+        ],
         plugins: [
             pluginAlias({
                 entries: [
-                    { find: /^node:(.+)$/, replacement: resolve(root, './node_modules/lo/polyfill/qjs/$1.js') }
+                    { find: /^node:(.+)$/, replacement: resolve(root, 'node_modules/lo/dist/qjs/polyfill/qjs/$1.js') }
                 ]
             }),
             pluginNodeResolve({
