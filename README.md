@@ -3,11 +3,12 @@ Simple environment variable format converter
 
 Features:
 * Easy to use
-* Transform various data formats to env variables
-* Includes cli tool and node api
+* Transform various data formats to env file format
+* Includes cli and node api
+* 0 external dependencies
 
 ## About
-I needed a way to transform various formats like json or table data into env variables. I wanted both a node api and cli tool for easy integration with build tools, docker, and kubernetes. This package can take output from various secret manager apis like vault and transform them into a format that can be consumed by kubernetes to create secrets or used in bash scripts.
+I needed a way to transform various formats like json or table data into env variables. I wanted both a node api and cli for easy integration with build tools, docker, and kubernetes. This package can take output from various secret manager apis like vault and transform them into a format that can be consumed by kubernetes to create secrets or used in bash scripts.
 
 ## Usage
 Add envstr as a dependency for your app and install via npm
