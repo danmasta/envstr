@@ -37,7 +37,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "dependencies": {
-    "lo": "github:danmasta/lo#f3d65be"
+    "lo": "github:danmasta/lo#e842186"
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^5.1.1",
