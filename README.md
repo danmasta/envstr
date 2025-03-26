@@ -35,12 +35,13 @@ Name | Alias | Type | Description
 `stdin` | - | *`boolean`* | Read input from stdin. Default is `undefined`
 `json` | j | *`boolean`* | Handle input as json. Default is `false`
 `key` | k | *`string`* | If input is json, parse data at specified key. Default is `undefined`
-`quotes` | q | *`boolean`* | If true add quotes around env values. Default is `false`
+`quotes` | q | *`boolean`* | If true add quotes around each output value. Default is `false`
 `newline` | n | *`string`* | Which character to use as newline delimeter. Default is `'\n'`
 `include` | i | *`string`* | Which keys to include in output: `key1,key2`
 `exclude` | e | *`string`* | Which keys to exclude from output: `key3,key4`
 `caps` | c | *`string`* | If true capitalizes the output key name. Default is `false`
 `export` | x | *`string`* | If true adds the `'export'` keyword in front of each output key. Default is `false`
+`version` | v | *`boolean`* | Print the cli version
 `help` | h | *`boolean`* | View the cli help menu
 
 ### Methods
