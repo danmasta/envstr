@@ -1,5 +1,6 @@
 import pluginAlias from '@rollup/plugin-alias';
 import pluginNodeResolve from '@rollup/plugin-node-resolve';
+import pluginJson from '@rollup/plugin-json';
 import { resolve } from 'node:path';
 
 let root = import.meta.dirname;
@@ -17,7 +18,8 @@ export default [
             preserveModules: false,
             exports: 'named',
             entryFileNames: '[name].js',
-            esModule: false
+            esModule: false,
+            inlineDynamicImports: true
         },
         external: [
             'qjs:os',
@@ -31,6 +33,9 @@ export default [
             }),
             pluginNodeResolve({
                 exportConditions: ['qjs', 'default', 'import']
+            }),
+            pluginJson({
+                namedExports: false
             })
         ]
     }
