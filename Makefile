@@ -2,7 +2,7 @@
 
 BIN := $(shell dirname $$(which qjs))
 DIR = .
-TARGET = linux-x64 linux-arm64 windows-x64 darwin-arm64
+TARGET = linux-x64 linux-arm64 windows-x64 darwin
 SEMVER = patch
 
 test:
