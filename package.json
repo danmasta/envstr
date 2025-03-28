@@ -1,7 +1,7 @@
 {
   "name": "@danmasta/envstr",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.0",
   "author": "Daniel Smith <dannmasta@gmail.com>",
   "description": "Environment variable format converter",
   "license": "MIT",
@@ -27,7 +27,7 @@
     "coverage": "make coverage",
     "build": "make build",
     "watch": "make watch",
-    "preversion": "make test build status"
+    "preversion": "make build test status"
   },
   "repository": {
     "type": "git",
