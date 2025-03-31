@@ -34,10 +34,10 @@ const args = {
     newline: 'n',
     include: 'i',
     exclude: 'e',
-    help: 'h',
     caps: 'c',
     export: 'x',
-    version: 'v'
+    version: 'v',
+    help: 'h'
 };
 
 const argv = getArgv();
