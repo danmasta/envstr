@@ -4,11 +4,11 @@ Simple environment variable format converter
 #### Features:
 * Easy to use
 * Transform various data formats to env file format
-* Includes node API, CLI, and standalone CLI
+* Includes node API, CLI, and standalone binary
 * 0 external dependencies
 
 ## About
-I needed a way to transform various formats like json or table data into env variables. I wanted both a node API and CLI for easy integration with build tools, docker, and kubernetes. This package can take output from various secret manager APIs like [vault](https://github.com/hashicorp/vault) and transform them into a format that can be consumed by kubernetes to create secrets or be used in bash scripts.
+I needed a way to transform various formats like json or table data into env variables. I wanted a node API, CLI, and standalone binary for easy integration with build tools, docker, and kubernetes. This package can take output from various secret manager APIs like [vault](https://github.com/hashicorp/vault) and transform them into a format that can be consumed by kubernetes to create secrets or used in bash scripts.
 
 ## Usage
 Add envstr as a dependency for your app and install via npm
@@ -27,6 +27,8 @@ Install standalone CLI via [homebrew](https://github.com/danmasta/homebrew-tap)
 ```sh
 brew install danmasta/tap/envstr
 ```
+*For windows, you can download from github [releases](https://github.com/danmasta/envstr/releases)*
+
 Import or require the package in your app
 ```js
 import Envstr from 'envstr';
