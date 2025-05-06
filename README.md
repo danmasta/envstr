@@ -1,27 +1,31 @@
 # Envstr
 Simple environment variable format converter
 
-Features:
+#### Features:
 * Easy to use
 * Transform various data formats to env file format
-* Includes cli and node api
+* Includes node API, CLI, and standalone CLI
 * 0 external dependencies
 
 ## About
-I needed a way to transform various formats like json or table data into env variables. I wanted both a node api and cli for easy integration with build tools, docker, and kubernetes. This package can take output from various secret manager apis like vault and transform them into a format that can be consumed by kubernetes to create secrets or used in bash scripts.
+I needed a way to transform various formats like json or table data into env variables. I wanted both a node API and CLI for easy integration with build tools, docker, and kubernetes. This package can take output from various secret manager APIs like [vault](https://github.com/hashicorp/vault) and transform them into a format that can be consumed by kubernetes to create secrets or be used in bash scripts.
 
 ## Usage
 Add envstr as a dependency for your app and install via npm
-```
+```sh
 npm install envstr@danmasta/envstr --save
 ```
 Install a specific [version](https://github.com/danmasta/envstr/tags)
-```
+```sh
 npm install envstr@danmasta/envstr#v0.0.1 --save
 ```
-Install cli via npm
-```
+Install node CLI via npm
+```sh
 npm install -g danmasta/envstr
+```
+Install standalone CLI via [homebrew](https://github.com/danmasta/homebrew-tap)
+```sh
+brew install danmasta/tap/envstr
 ```
 Import or require the package in your app
 ```js
@@ -41,8 +45,8 @@ Name | Alias | Type | Description
 `exclude` | e | *`string`* | Which keys to exclude from output: `key3,key4`
 `caps` | c | *`string`* | If true capitalizes the output key name. Default is `false`
 `export` | x | *`string`* | If true adds the `'export'` keyword in front of each output key. Default is `false`
-`version` | v | *`boolean`* | Print the cli version
-`help` | h | *`boolean`* | View the cli help menu
+`version` | v | *`boolean`* | Print the CLI version
+`help` | h | *`boolean`* | View the CLI help menu
 
 ### Methods
 Name | Description
@@ -53,7 +57,7 @@ Name | Description
 `parseJsonStr(str)` | Takes json formatted string data and transforms it to an env string based on options
 
 ## Examples
-Use node api to convert object to env string
+Use node API to convert object to env string
 ```js
 const envstr = new Envstr({ export: true, quotes: true, caps: true });
 
@@ -68,7 +72,7 @@ console.log(envstr.parseObj(obj));
 // export KEY2="false"
 ```
 
-Use cli to convert json data to env string
+Use CLI to convert json data to env string
 ```bash
 envstr -s '{"KEY1":true,"KEY2":false}' --json --quotes
 
