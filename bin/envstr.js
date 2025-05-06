@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { getArgv, optsFromArgv } from 'lo';
+import { log } from 'node:console';
 import { Envstr } from '../lib/envstr.js';
 import { readStdin } from '../lib/util.js';
 import pkg from '../package.json' with { type: 'json' };
@@ -43,7 +44,6 @@ const args = {
 const argv = getArgv();
 const opts = optsFromArgv(args, { argv });
 const envstr = new Envstr(opts);
-const { log } = console;
 
 let { help, version, stdin, json, string: str } = opts;
 
