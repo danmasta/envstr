@@ -53,10 +53,10 @@ Name | Alias | Type | Description
 ### Methods
 Name | Description
 -----|------------
-`fromJSON(str)` | Takes JSON formatted string data and transforms it to an env string
-`fromObject(obj)` | Takes a javascript object and transforms it to an env string
+`fromJSON(str)` | Takes JSON formatted string data and transforms it to env string format
+`fromObject(obj)` | Takes a javascript object and outputs a formatted env string
 `fromPairs(pairs[])` | Takes an array of `[key, val]` pairs and outputs a formatted env string
-`fromTable(str)` | Takes table formatted string data and transforms it to an env string
+`fromTable(str)` | Takes table formatted string data and transforms it to env string format
 
 ## Examples
 Use node API to convert object to env string
