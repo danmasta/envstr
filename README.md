@@ -8,7 +8,7 @@ Simple environment variable format converter
 * 0 external dependencies
 
 ## About
-I needed a way to transform various formats like json or table data into env variables. I wanted a node API, CLI, and standalone binary for easy integration with build tools, docker, and kubernetes. This package can take output from various secret manager APIs like [vault](https://github.com/hashicorp/vault) and transform them into a format that can be consumed by kubernetes to create secrets or used in bash scripts.
+I needed a way to transform various formats like JSON or table data into env variables. I wanted a node API, CLI, and standalone binary for easy integration with build tools, docker, and kubernetes. This package can take output from various secret manager APIs like [vault](https://github.com/hashicorp/vault) and transform them into a format that can be consumed by kubernetes to create secrets or used in bash scripts.
 
 ## Usage
 Add envstr as a dependency for your app and install via npm
@@ -31,7 +31,7 @@ brew install danmasta/tap/envstr
 
 Import or require the package in your app
 ```js
-import Envstr from 'envstr';
+import envstr from 'envstr';
 ```
 
 ### Options
@@ -39,8 +39,8 @@ Name | Alias | Type | Description
 -----|-------|------|------------
 `string` | s | *`string`* | Text string to parse. Default is `undefined`
 `stdin` | - | *`boolean`* | Read input from stdin. Default is `undefined`
-`json` | j | *`boolean`* | Handle input as json. Default is `false`
-`key` | k | *`string`* | If input is json, parse data at specified key. Default is `undefined`
+`json` | j | *`boolean`* | Handle input as JSON. Default is `false`
+`key` | k | *`string`* | If input is JSON, parse data at specified key. Default is `undefined`
 `quotes` | q | *`boolean`* | If true add quotes around each output value. Default is `false`
 `newline` | n | *`string`* | Which character to use as newline delimeter. Default is `'\n'`
 `include` | i | *`string`* | Which keys to include in output: `key1,key2`
@@ -53,33 +53,41 @@ Name | Alias | Type | Description
 ### Methods
 Name | Description
 -----|------------
-`pairsToStr(pairs[])` | Takes an array of `[key, val]` pairs and outputs a formatted env string
-`parseTableStr(str)` | Takes table formatted string data and transforms it to an env string based on options
-`parseObj(obj)` | Takes a javascript object and transforms it to an env string based on options
-`parseJsonStr(str)` | Takes json formatted string data and transforms it to an env string based on options
+`fromJSON(str)` | Takes JSON formatted string data and transforms it to an env string
+`fromObject(obj)` | Takes a javascript object and transforms it to an env string
+`fromPairs(pairs[])` | Takes an array of `[key, val]` pairs and outputs a formatted env string
+`fromTable(str)` | Takes table formatted string data and transforms it to an env string
 
 ## Examples
 Use node API to convert object to env string
 ```js
-const envstr = new Envstr({ export: true, quotes: true, caps: true });
+import { fromObject } from 'envstr';
 
 let obj = {
-    key1: true,
-    key2: false
+    name: 'app',
+    env: 'dev'
 };
 
-console.log(envstr.parseObj(obj));
+console.log(fromObject(obj, { export: true, quotes: true, caps: true }));
 
-// export KEY1="true"
-// export KEY2="false"
+// export NAME="app"
+// export ENV="dev"
 ```
 
-Use CLI to convert json data to env string
-```bash
-envstr -s '{"KEY1":true,"KEY2":false}' --json --quotes
+Use CLI to convert JSON data to env string
+```sh
+envstr -s '{"NAME":"app","ENV":"dev"}' --json --quotes
 
-# KEY1="true"
-# KEY2="false"
+# NAME="app"
+# ENV="dev"
+```
+
+Read JSON data from stdin
+```sh
+echo '{"NAME":"app","ENV":"dev"}' | envstr --json --quotes -
+
+# NAME="app"
+# ENV="dev"
 ```
 
 ## Testing
