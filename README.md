@@ -64,29 +64,29 @@ Use node API to convert object to env string
 import { fromObject } from 'envstr';
 
 let obj = {
-    name: 'app',
+    name: 'test',
     env: 'dev'
 };
 
 console.log(fromObject(obj, { export: true, quotes: true, caps: true }));
 
-// export NAME="app"
+// export NAME="test"
 // export ENV="dev"
 ```
 
 Use CLI to convert JSON data to env string
 ```sh
-envstr -s '{"NAME":"app","ENV":"dev"}' --json --quotes
+envstr -s '{"NAME":"test","ENV":"dev"}' --json --quotes
 
-# NAME="app"
+# NAME="test"
 # ENV="dev"
 ```
 
 Read JSON data from stdin
 ```sh
-echo '{"NAME":"app","ENV":"dev"}' | envstr --json --quotes -
+echo '{"NAME":"test","ENV":"dev"}' | envstr --json --quotes -
 
-# NAME="app"
+# NAME="test"
 # ENV="dev"
 ```
 
