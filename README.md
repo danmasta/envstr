@@ -37,16 +37,17 @@ import envstr from 'envstr';
 ### Options
 Name | Alias | Type | Description
 -----|-------|------|------------
-`string` | s | *`string`* | Text string to parse. Default is `undefined`
+`input` | i | *`string`* | Text string to parse. Default is `undefined`
 `stdin` | - | *`boolean`* | Read input from stdin. Default is `undefined`
 `json` | j | *`boolean`* | Handle input as JSON. Default is `false`
 `key` | k | *`string`* | If input is JSON, parse data at specified key. Default is `undefined`
-`quotes` | q | *`boolean`* | If true add quotes around each output value. Default is `false`
+`quotes` | q | *`boolean`* | Add quotes around each output value. Default is `false`
 `newline` | n | *`string`* | Which character to use as newline delimeter. Default is `'\n'`
-`include` | i | *`string`* | Which keys to include in output: `key1,key2`
-`exclude` | e | *`string`* | Which keys to exclude from output: `key3,key4`
-`caps` | c | *`string`* | If true capitalizes the output key name. Default is `false`
-`export` | x | *`string`* | If true adds the `'export'` keyword in front of each output key. Default is `false`
+`pick` | p | *`string\|string[]`* | Pick which keys to include in output: `key1,key2`
+`exclude` | e | *`string\|string[]`* | Exclude keys from output: `key3,key4`
+`caps` | c | *`boolean`* | Capitalize each output key. Default is `false`
+`export` | x | *`boolean`* | Add the `'export'` keyword in front of each output key. Default is `false`
+`prefix` | f | *`string`* | Prefix to add to each output key. Default is `undefined`
 `version` | v | *`boolean`* | Print the CLI version
 `help` | h | *`boolean`* | View the CLI help menu
 
@@ -76,7 +77,7 @@ console.log(fromObject(obj, { export: true, quotes: true, caps: true }));
 
 Use CLI to convert JSON data to env string
 ```sh
-envstr -s '{"NAME":"test","ENV":"dev"}' --json --quotes
+envstr -i '{"NAME":"test","ENV":"dev"}' --json --quotes
 
 # NAME="test"
 # ENV="dev"
