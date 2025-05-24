@@ -20,7 +20,7 @@ Options:
     --exclude -e - Exclude keys from output: key3,key4
     --caps    -c - Capitalize each output key
     --export  -x - Add the 'export' keyword in front of each output key
-    --prefix  -f - Prefix to add to each output key
+    --prefix  -a - Prefix to add to each output key
     --version -v - Print the current version
     --help    -h - Show this help message
 
@@ -38,7 +38,7 @@ const args = {
     exclude: 'e',
     caps: 'c',
     export: 'x',
-    prefix: 'f',
+    prefix: 'a', // add, affix
     version: 'v',
     help: 'h'
 };
