@@ -34,8 +34,8 @@ describe('Envstr', () => {
         expect(fromObject({ data: { name: 'test', env: 'dev' } }, { key: 'data' })).to.equal('name=test\nenv=dev');
     });
 
-    it('include', () => {
-        expect(fromObject({ name: 'test', env: 'dev' }, { include: 'name' })).to.equal('name=test');
+    it('pick', () => {
+        expect(fromObject({ name: 'test', env: 'dev' }, { pick: 'name' })).to.equal('name=test');
     });
 
     it('exclude', () => {
@@ -44,6 +44,10 @@ describe('Envstr', () => {
 
     it('newline', () => {
         expect(fromObject({ name: 'test', env: 'dev' }, { newline: '\r\n' })).to.equal('name=test\r\nenv=dev');
+    });
+
+    it('prefix', () => {
+        expect(fromObject({ name: 'test', env: 'dev' }, { prefix: 't_' })).to.equal('t_name=test\nt_env=dev');
     });
 
 });
