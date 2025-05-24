@@ -10,33 +10,35 @@ const HELP = `Usage:
     envstr [str] [...options]
 
 Options:
-    --string  -s - Text string to parse
+    --input   -i - Text string to parse
     --stdin    - - Read input from stdin
-    --json    -j - Handle input as json
-    --key     -k - If input is json, parse data at specified key
-    --quotes  -q - If true add quotes around each output value
+    --json    -j - Handle input as JSON
+    --key     -k - If input is JSON, parse data at specified key
+    --quotes  -q - Add quotes around each output value
     --newline -n - Which character to use as newline delimeter. Default is '\\n'
-    --include -i - Which keys to include in output: key1,key2
-    --exclude -e - Which keys to exclude from output: key3,key4
-    --caps    -c - If true capitalizes the output key name
-    --export  -x - If true adds the 'export' keyword in front of each output key
+    --pick    -p - Pick which keys to include in output: key1,key2
+    --exclude -e - Exclude keys from output: key3,key4
+    --caps    -c - Capitalize each output key
+    --export  -x - Add the 'export' keyword in front of each output key
+    --prefix  -f - Prefix to add to each output key
     --version -v - Print the current version
     --help    -h - Show this help message
 
 Example:
-    envstr -s '{"KEY1":true,"KEY2":false}' --json --quotes`;
+    envstr -i '{"KEY1":true,"KEY2":false}' --json --quotes`;
 
 const args = {
-    string: 's',
+    input: 'i',
     stdin: '-',
     json: 'j',
     key: 'k',
     quotes: 'q',
     newline: 'n',
-    include: 'i',
+    pick: 'p',
     exclude: 'e',
     caps: 'c',
     export: 'x',
+    prefix: 'f',
     version: 'v',
     help: 'h'
 };
@@ -44,24 +46,24 @@ const args = {
 const argv = getArgv();
 const opts = optsFromArgv(args, { argv });
 
-let { help, version, stdin, json, string: str } = opts;
+let { help, version, stdin, json, input } = opts;
 
 if (help) {
     log(HELP);
 } else if (version) {
     log(pkg.version);
 } else {
-    if (!str && stdin) {
-        str = await readStdin();
+    if (!input && stdin) {
+        input = await readStdin();
     }
-    if (!str) {
-        str = argv._.pop();
+    if (!input) {
+        input = argv._.pop();
     }
-    if (str) {
+    if (input) {
         if (json) {
-            log(fromJSON(str, opts));
+            log(fromJSON(input, opts));
         } else {
-            log(fromTable(str, opts));
+            log(fromTable(input, opts));
         }
     } else {
         log(HELP);
