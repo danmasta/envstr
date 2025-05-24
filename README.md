@@ -46,7 +46,7 @@ Name | Alias | Type | Description
 `pick` | p | *`string\|string[]`* | Pick which keys to include in output: `key1,key2`
 `exclude` | e | *`string\|string[]`* | Exclude keys from output: `key3,key4`
 `caps` | c | *`boolean`* | Capitalize each output key. Default is `false`
-`export` | x | *`boolean`* | Add the `'export'` keyword in front of each output key. Default is `false`
+`export` | x | *`boolean`* | Add the `export` keyword in front of each output key. Default is `false`
 `prefix` | f | *`string`* | Prefix to add to each output key. Default is `undefined`
 `version` | v | *`boolean`* | Print the CLI version
 `help` | h | *`boolean`* | View the CLI help menu
